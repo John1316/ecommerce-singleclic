@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { Link } from "react-router-dom";
 import { useCart } from "../../../hooks/useCart";
 import StarIcon from "../../svgs/StarIcon";
 import { Button } from "../Buttons/Button";
@@ -10,14 +11,14 @@ export default function ProductCard({
     return (
     <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
         <div className="h-56 w-full">
-          <a href="#">
+          <Link to={`/product/${product?.id}`}>
             <img className="mx-auto h-full dark:hidden" src={product.image} alt="" />
             <img className="mx-auto hidden h-full dark:block" src={product.image}  alt="" />
-          </a>
+          </Link>
         </div>
         <div className="pt-6">
 
-          <a href="#" className="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white line-clamp-2 min-h-[45px]">{product?.title || ""}</a>
+          <Link to={`/product/${product?.id}`} className="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white line-clamp-2 min-h-[45px]">{product?.title || ""}</Link>
 
           <div className="mt-2 flex items-center gap-2">
             <div className="flex items-center">

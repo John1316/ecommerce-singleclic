@@ -20,13 +20,13 @@ export default function Products() {
   
   return (
     <section>
-      <div className="px-[50px] py-[100px]">
+      {/* <div className="px-[50px] py-[100px]"> */}
         <div className="grid grid-cols-4 gap-[16px]">
           {productsItems.length ? 
             productsItems.map((product: Product) =><ProductCard  product={product} key={product.id} />)
           : <p>No Products found</p>}
         </div>
-      </div>
+      {/* </div> */}
     </section>
   )
 }

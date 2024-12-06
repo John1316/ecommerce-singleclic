@@ -1,4 +1,5 @@
 import MainLayout from "../layouts/MainLayout"
+import Cart from "../pages/Cart";
 import ProductDetails from "../pages/ProductDetails"
 import Products from "../pages/Products"
 import {  RouteObject } from 'react-router-dom';
@@ -15,14 +16,17 @@ import {  RouteObject } from 'react-router-dom';
             element: <Products />,
         },
         {
-            path: 'products',
+            path: 'product',
             children: [
                 {
                     path: ':productId',
                     element: <ProductDetails />,
                 }
             ]
-        },
+        },{
+            path: 'cart',
+            element: <Cart />
+        }
     ]
 }]
 export default routes

@@ -1,13 +1,13 @@
 import { useCart } from "../../../hooks/useCart"
-
+import {Link} from 'react-router-dom'
 export default function Header() {
-  const {state} = useCart()
+  const { state } = useCart()
   return (
-<header className='flex bg-white border-b py-3 sm:px-6 px-4 font-[sans-serif] min-h-[75px] tracking-wide relative z-50'>
+    <header className='flex bg-white border-b py-3 sm:px-6 px-4 font-[sans-serif] min-h-[75px] tracking-wide relative z-50'>
       <div className='flex max-w-screen-xl mx-auto w-full'>
         <div className='flex flex-wrap items-center lg:gap-y-2 gap-4 w-full'>
-          <a href="javascript:void(0)"><img src="https://readymadeui.com/readymadeui.svg" alt="logo" className='w-36' />
-          </a>
+          <Link to={'/'} ><img src="https://readymadeui.com/readymadeui.svg" alt="logo" className='w-36' />
+          </Link>
 
           <div id="collapseMenu"
             className='lg:ml-6 max-lg:hidden lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50'>
@@ -33,8 +33,8 @@ export default function Header() {
                     In</button>
                 </div>
               </li>
-              <li className='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
-                className='text-[#007bff] hover:text-[#007bff] text-[15px] block font-semibold'>Products</a></li>
+              <li className='max-lg:border-b max-lg:py-3 px-3'><Link to={'/'} 
+                className='text-[#007bff] hover:text-[#007bff] text-[15px] block font-semibold'>Products</Link></li>
             </ul>
           </div>
 
@@ -43,7 +43,7 @@ export default function Header() {
 
             <div className='flex items-center sm:space-x-8 space-x-6'>
 
-              <div className="flex flex-col items-center justify-center gap-0.5 cursor-pointer">
+              <Link to={'/cart'} className="flex flex-col items-center justify-center gap-0.5 cursor-pointer">
                 <div className="relative">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="cursor-pointer fill-[#333] inline"
                     viewBox="0 0 512 512">
@@ -54,12 +54,12 @@ export default function Header() {
                   <span className="absolute left-auto -ml-1 top-0 rounded-full bg-red-500 px-1 py-0 text-xs text-white">{state?.itemCount || 0}</span>
                 </div>
                 <span className="text-[13px] font-semibold text-[#333]">Cart</span>
-              </div>
+              </Link>
 
-   
+
             </div>
           </div>
         </div>
       </div>
-    </header>  )
+    </header>)
 }
