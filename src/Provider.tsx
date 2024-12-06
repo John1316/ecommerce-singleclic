@@ -1,5 +1,6 @@
 import { NextUIProvider } from '@nextui-org/react'
 import React from 'react'
+import { CartProvider } from './context/CartContext'
 
 export default function Provider({
     children
@@ -7,8 +8,10 @@ export default function Provider({
     children: React.ReactNode
 }) {
     return (
-        <NextUIProvider>
-            {children}
-        </NextUIProvider>
+        <CartProvider>
+            <NextUIProvider>
+                {children}
+            </NextUIProvider>
+        </CartProvider>
     )
 }
