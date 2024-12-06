@@ -4,6 +4,7 @@ type Product = {
     id: number;
     image: string;
     price: number;
+    quantity?: number;
     rating?: Rating;
     title: string;
 }
