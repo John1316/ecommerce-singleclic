@@ -1,7 +1,9 @@
+
+const BASE_URL = import.meta.env.VITE_URL_API || "https://fakestoreapi.com"
 const HTTPS_REQUESTS = {
-    allProductsUrl: `${import.meta.env.VITE_URL_API}/products`,
-    productIdUrl: `${import.meta.env.VITE_URL_API}/products/`
+    allProductsUrl: `${BASE_URL}/products`,
+    productIdUrl: `${BASE_URL}/products/`
 }
 export {
-    HTTPS_REQUESTS
+    HTTPS_REQUESTS,BASE_URL
 }

@@ -10,6 +10,7 @@ type ButtonProps = {
   fullWidth?: boolean;
   onClick?: () => void;
   className?: string;
+  id?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -21,9 +22,11 @@ export const Button: React.FC<ButtonProps> = ({
   fullWidth,
   onClick,
   className,
+  id
 }) => {
   return (
     <NextUIButton
+      id={id}
       variant={variant}
       color={color}
       size={size}

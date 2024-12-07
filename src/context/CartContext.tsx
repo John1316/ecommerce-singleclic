@@ -99,6 +99,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const updateQuantity = (productId: number, newQuantity: number) => {
+    console.log("🚀 ~ updateQuantity ~ newQuantity:", newQuantity)
     if (newQuantity < 0) return;
 
     setState(prevState => {
