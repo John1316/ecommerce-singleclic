@@ -87,7 +87,7 @@ export default function ProductCard({
                   exit={{ scale: 0 }}
                   className="absolute inset-0 flex items-center justify-center"
                 >
-                  <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-white" />
+                  <div className="animate-spin rounded-full border-b-2 border-white" />
                 </motion.div>
               ) : (
                 <motion.div
