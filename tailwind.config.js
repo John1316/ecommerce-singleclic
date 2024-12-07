@@ -13,7 +13,25 @@ module.exports = {
   },
   darkMode: "class",
   plugins: [
-    nextui({})
+    nextui({
+      themes: {
+        light: {
+          layout: {
+            radius: {
+              small: "2px", // rounded-small
+              medium: "4px", // rounded-medium
+              large: "8px", // rounded-large
+            }
+          },
+          colors: {
+            primary: {
+              DEFAULT: '#26B7CD',
+            },
+            // ... rest of the colors
+          },
+      }
+      }
+    })
   ]
 }
 
