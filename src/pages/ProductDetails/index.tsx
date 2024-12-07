@@ -4,22 +4,32 @@ import { useParams } from "react-router-dom"
 import { getProductId } from "../../api/services/product.service"
 import { Button } from "../../ui/components/Buttons/Button"
 import { useCart } from "../../hooks/useCart"
+import Loader from "../../ui/components/Loading/Loader"
 
 export default function ProductDetails() {
   const { addToCart } = useCart()
   const { productId } = useParams()
+  const [isLoading, setIsLoading] = useState(true)
   const [productItem, setProductItem] = useState<Product | any>()
   async function getProductById() {
     const productDetail = await getProductId(productId || '')
     console.log("🚀 ~ getProductById ~ productDtails:", productDetail)
-    setProductItem(productDetail)
+    if(productDetail){
+      setProductItem(productDetail)
+    }
+    setIsLoading(false)
   }
   useEffect(() => {
     getProductById()
     return () => {}
   }, [])
-
-  return productItem?.id ? (
+  if(isLoading){
+    return <Loader />
+  }
+  if(!productItem?.id){
+    return "No item found"
+  }
+  return  (
     <div className="grid grid-cols-12 gap-[12px]">
       <div className="main-image col-span-4">
         <img src={productItem?.image || ''} alt="Main product image" className="" />
@@ -35,5 +45,5 @@ export default function ProductDetails() {
 
       </div>
     </div>
-  ) : "No item found"
+  )
 }

@@ -44,7 +44,7 @@ export default function Header() {
             <div className='flex items-center sm:space-x-8 space-x-6'>
 
               <Link to={'/cart'} className="flex flex-col items-center justify-center gap-0.5 cursor-pointer">
-                <div className="relative">
+                <div className="relative cart-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="cursor-pointer fill-[#333] inline"
                     viewBox="0 0 512 512">
                     <path

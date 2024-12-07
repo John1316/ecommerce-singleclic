@@ -3,11 +3,73 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../../hooks/useCart";
 import StarIcon from "../../svgs/StarIcon";
 import { Button } from "../Buttons/Button";
+import { useState } from "react";
+import CartIcon from "../../svgs/CartIcon";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function ProductCard({
     product,
 }: ProductCardProps) {
+  const [isAdding, setIsAdding] = useState(false);
   const { addToCart } = useCart();
+  const handleAddToCart = async () => {
+    setIsAdding(true);
+    
+    // Create floating image animation
+    const productImage = document.createElement('img');
+    productImage.src = product.image;
+    productImage.style.position = 'fixed';
+    productImage.style.zIndex = '9999';
+    productImage.style.width = '75px';
+    productImage.style.height = '75px';
+    productImage.style.borderRadius = '8px';
+    productImage.style.pointerEvents = 'none';
+    
+    const buttonRect = document.querySelector(`#add-to-cart-${product.id}`)?.getBoundingClientRect();
+    const cartIcon = document.querySelector('.cart-icon')?.getBoundingClientRect();
+    
+    if (buttonRect && cartIcon) {
+      productImage.style.top = `${buttonRect.top}px`;
+      productImage.style.left = `${buttonRect.left}px`;
+      
+      document.body.appendChild(productImage);
+      
+      // Animate the image
+      productImage.animate([
+        { 
+          top: `${buttonRect.top}px`,
+          left: `${buttonRect.left}px`,
+          opacity: 1,
+          transform: 'scale(1)'
+        },
+        { 
+          top: `${cartIcon.top}px`,
+          left: `${cartIcon.left}px`,
+          opacity: 0,
+          transform: 'scale(0.5)'
+        }
+      ], {
+        duration: 800,
+        easing: 'ease-in-out'
+      }).onfinish = () => {
+        productImage.remove();
+        addToCart(product);
+        setIsAdding(false);
+      };
+    }
+  };
+  const renderRatingStars = () => {
+    return Array.from({ length: Math.floor(product.rating?.rate || 0) }, (_, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: index * 0.1 }}
+      >
+        <StarIcon />
+      </motion.div>
+    ));
+  };
     return (
     <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
         <div className="h-56 w-full">
@@ -22,11 +84,7 @@ export default function ProductCard({
 
           <div className="mt-2 flex items-center gap-2">
             <div className="flex items-center">
-              {Array.from({ length: Math.floor(product.rating?.rate || 0)  }, (_, index) => (
-                <div key={index}>
-                  <StarIcon />
-                </div>
-              ))}
+              {renderRatingStars()}
 
             </div>
 
@@ -39,14 +97,39 @@ export default function ProductCard({
             <p className="text-2xl font-extrabold leading-tight text-gray-900 dark:text-white">{product.price} LE</p>
 
 
-            <Button 
+            {/* <Button 
               onClick={()=> addToCart(product)}
             >
-              <svg className="-ms-2 me-2 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6"></path>
-              </svg>
+              <CartIcon />
               Add to Cart
-            </Button>
+            </Button> */}
+          <Button
+            id={`add-to-cart-${product.id}`}
+            onClick={handleAddToCart}
+            className="relative overflow-hidden"
+          >
+            <AnimatePresence>
+              {isAdding ? (
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0 }}
+                  className="absolute inset-0 flex items-center justify-center"
+                >
+                  <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-white" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  className="flex items-center"
+                >
+                  <CartIcon />
+                  <span className="ml-2">Add to Cart</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </Button>
           </div>
         </div>
       </div>
