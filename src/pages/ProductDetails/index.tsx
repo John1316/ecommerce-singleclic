@@ -109,13 +109,13 @@ export default function ProductDetails() {
                   exit={{ scale: 0 }}
                   className="absolute inset-0 flex items-center justify-center"
                 >
-                  <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-white" />
+                  <div className="min-w-[130px] animate-spin rounded-full border-b-2 border-white" />
                 </motion.div>
               ) : (
                 <motion.div
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
-                  className="flex items-center"
+                  className="flex items-center min-w-[130px]"
                 >
                   <CartIcon />
                   <span className="ml-2">Add to Cart</span>
