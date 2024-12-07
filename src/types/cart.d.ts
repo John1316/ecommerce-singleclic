@@ -7,7 +7,8 @@ type CartState = {
     itemCount: number
 }
   
-  type CartAction =
-    | { type: 'ADD_TO_CART'; payload: Product }
-    | { type: 'REMOVE_FROM_CART'; payload: number }
-    | { type: 'UPDATE_QUANTITY'; payload: { id: number; quantity: number } };
+type FloatingCartAnimationProps = {
+  duration?: number;
+  imageSize?: number;
+  borderRadius?: number;
+}

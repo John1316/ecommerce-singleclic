@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 export default function MainLayout() {
   return <>
     <Header />
-    <div className="px-[50px] py-[100px]">
+    <div className="main-layout">
       <Outlet />
     </div>
     <Footer />

@@ -6,57 +6,27 @@ import { Button } from "../Buttons/Button";
 import { useState } from "react";
 import CartIcon from "../../svgs/CartIcon";
 import { motion, AnimatePresence } from "framer-motion";
+import { useFloatingCartAnimation } from "../../../hooks/useFloatingCartAnimation";
 
 export default function ProductCard({
     product,
 }: ProductCardProps) {
   const [isAdding, setIsAdding] = useState(false);
   const { addToCart } = useCart();
+  const { animate, isAnimating } = useFloatingCartAnimation();
+
   const handleAddToCart = async () => {
+    if (!product) return;
     setIsAdding(true);
-    
-    // Create floating image animation
-    const productImage = document.createElement('img');
-    productImage.src = product.image;
-    productImage.style.position = 'fixed';
-    productImage.style.zIndex = '9999';
-    productImage.style.width = '75px';
-    productImage.style.height = '75px';
-    productImage.style.borderRadius = '8px';
-    productImage.style.pointerEvents = 'none';
-    
-    const buttonRect = document.querySelector(`#add-to-cart-${product.id}`)?.getBoundingClientRect();
-    const cartIcon = document.querySelector('.cart-icon')?.getBoundingClientRect();
-    
-    if (buttonRect && cartIcon) {
-      productImage.style.top = `${buttonRect.top}px`;
-      productImage.style.left = `${buttonRect.left}px`;
-      
-      document.body.appendChild(productImage);
-      
-      // Animate the image
-      productImage.animate([
-        { 
-          top: `${buttonRect.top}px`,
-          left: `${buttonRect.left}px`,
-          opacity: 1,
-          transform: 'scale(1)'
-        },
-        { 
-          top: `${cartIcon.top}px`,
-          left: `${cartIcon.left}px`,
-          opacity: 0,
-          transform: 'scale(0.5)'
-        }
-      ], {
-        duration: 800,
-        easing: 'ease-in-out'
-      }).onfinish = () => {
-        productImage.remove();
+
+    await animate(
+      product.id,
+      product.image,
+      () => {
         addToCart(product);
         setIsAdding(false);
-      };
-    }
+      }
+    );
   };
   const renderRatingStars = () => {
     return Array.from({ length: Math.floor(product.rating?.rate || 0) }, (_, index) => (
@@ -106,6 +76,7 @@ export default function ProductCard({
           <Button
             id={`add-to-cart-${product.id}`}
             onClick={handleAddToCart}
+            disabled={isAdding || isAnimating}
             className="relative overflow-hidden"
           >
             <AnimatePresence>
