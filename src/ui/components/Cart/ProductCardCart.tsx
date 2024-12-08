@@ -8,7 +8,7 @@ export default function ProductCardCart({ product }: ProductCardProps) {
   return (
     <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
       <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
-        <Link to={`/product/${product?.id}`} className="shrink-0 md:order-1">
+        <Link aria-label={`product_${product.title}`} to={`/product/${product?.id}`} className="shrink-0 md:order-1">
           <img
             className="h-20 w-20 dark:hidden"
             src={product?.image || ""}
@@ -27,6 +27,7 @@ export default function ProductCardCart({ product }: ProductCardProps) {
         <div className="flex items-center justify-between md:order-3 md:justify-end gap-[12px]">
           <div className="flex items-center">
             <button
+              aria-label="Minus_quantity"
               type="button"
               id="decrement-button"
               className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 "
@@ -36,16 +37,9 @@ export default function ProductCardCart({ product }: ProductCardProps) {
             >
               <MinusCartIcon />
             </button>
-            <input
-              type="text"
-              id="counter-input"
-              data-input-counter
-              className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white"
-              placeholder=""
-              value={product.quantity}
-              required
-            />
+            <p className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white">{product?.quantity || 0}</p>
             <button
+              aria-label="plus_quantity"
               type="button"
               id="increment-button"
               className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 "

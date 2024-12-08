@@ -5,6 +5,7 @@ import { Button } from '../Buttons/Button'
 const AddToCartButton = ({ product, isAdding, handleAddToCart }: AddToCartBtnProps) => {
   return (
     <Button
+      ariaLabel={`product_${product.title}`}
       id={`add-to-cart-${product?.id}`}
       onClick={handleAddToCart}
       disabled={isAdding}

@@ -35,7 +35,7 @@ export default function Header() {
                   />
                 </svg>
               </button>
-              <Link to={"/"}>
+              <Link aria-label="go_to_home_header" to={"/"}>
                 <img
                   src="https://readymadeui.com/readymadeui.svg"
                   alt="logo"
@@ -47,6 +47,7 @@ export default function Header() {
             <ul className="lg:flex hidden flex-col md:flex-row md:items-center gap-4 p-4 md:p-0">
               <li>
                 <Link
+                aria-label="gto_to__products"
                   to={"/"}
                   className="text-[#007bff] hover:text-[#007bff] text-[15px] font-semibold"
                 >
@@ -71,6 +72,7 @@ export default function Header() {
           >
             {/* Mobile Menu Close Button */}
             <button
+              aria-label="toggler"
               onClick={toggleMenu}
               className="md:hidden absolute top-4 right-4 rounded-full bg-white w-9 h-9 flex items-center justify-center border"
             >
@@ -79,7 +81,7 @@ export default function Header() {
 
             {/* Mobile Logo */}
             <div className="md:hidden p-4 border-b mb-4">
-              <Link to="/">
+              <Link aria-label="home_logo" to="/">
                 <img
                   src="https://readymadeui.com/readymadeui.svg"
                   alt="logo"
@@ -90,6 +92,7 @@ export default function Header() {
             <ul className="lg:hidden flex flex-col md:flex-row md:items-center gap-4 p-4 md:p-0">
               <li>
                 <Link
+                  aria-label="close_menu"
                   onClick={()=> setIsMenuOpen(false)}
                   to={"/"}
                   className="text-[#007bff] hover:text-[#007bff] text-[15px] font-semibold"
@@ -104,6 +107,7 @@ export default function Header() {
           {/* Cart Section */}
           <div className=" items-center">
             <Link
+              aria-label="go_to_cart"
               to={"/cart"}
               className="flex flex-col items-center justify-center gap-0.5 cursor-pointer"
             >

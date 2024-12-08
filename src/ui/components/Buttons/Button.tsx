@@ -11,6 +11,7 @@ type ButtonProps = {
   onClick?: () => void;
   className?: string;
   id?: string;
+  ariaLabel: string,
   disabled?: boolean
 }
 
@@ -20,6 +21,7 @@ export const Button: React.FC<ButtonProps> = ({
   color = "primary",
   size = "md",
   isLoading,
+  ariaLabel,
   fullWidth,
   onClick,
   className,
@@ -28,6 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <NextUIButton
+      aria-label={ariaLabel}
       id={id}
       variant={variant}
       color={color}
