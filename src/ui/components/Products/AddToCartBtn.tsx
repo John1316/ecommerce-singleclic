@@ -10,7 +10,7 @@ const AddToCartButton = ({ product, isAdding, handleAddToCart }: AddToCartBtnPro
       
       onClick={handleAddToCart}
       disabled={isAdding}
-      className="relative min-h-[40px] min-w-[140px] flex items-center justify-center"
+      className="relative min-h-[40px] min-w-[140px] flex items-center justify-center bg-[#006fee] text-white px-[16px]"
     >
       <AnimatePresence mode="wait">
         {isAdding ? (
