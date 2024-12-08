@@ -15,3 +15,8 @@ type Rating = {
 type ProductCardProps = {
     product: Product,
 }
+type AddToCartBtnProps = {
+    product: Product, 
+    isAdding: boolean, 
+    handleAddToCart: () => void
+}

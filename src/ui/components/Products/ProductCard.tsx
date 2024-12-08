@@ -2,19 +2,17 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../../../hooks/useCart";
 import StarIcon from "../../svgs/StarIcon";
-import { Button } from "../Buttons/Button";
 import { useState } from "react";
-import CartIcon from "../../svgs/CartIcon";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useFloatingCartAnimation } from "../../../hooks/useFloatingCartAnimation";
-import { Spinner } from "@nextui-org/react";
+import AddToCartButton from "./AddToCartBtn";
 
 export default function ProductCard({
     product,
 }: ProductCardProps) {
   const [isAdding, setIsAdding] = useState(false);
   const { addToCart } = useCart();
-  const { animate, isAnimating } = useFloatingCartAnimation();
+  const { animate } = useFloatingCartAnimation();
 
   const handleAddToCart = async () => {
     if (!product) return;
@@ -74,7 +72,7 @@ export default function ProductCard({
               <CartIcon />
               Add to Cart
             </Button> */}
-          <Button
+          {/* <Button
             id={`add-to-cart-${product.id}`}
             onClick={handleAddToCart}
             disabled={isAdding || isAnimating}
@@ -101,7 +99,12 @@ export default function ProductCard({
                 </motion.div>
               )}
             </AnimatePresence>
-          </Button>
+          </Button> */}
+          <AddToCartButton
+            product={product}
+            isAdding={isAdding}
+            handleAddToCart={handleAddToCart}
+          />
           </div>
         </div>
       </div>
