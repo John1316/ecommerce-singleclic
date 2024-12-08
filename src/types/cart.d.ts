@@ -12,3 +12,7 @@ type FloatingCartAnimationProps = {
   imageSize?: number;
   borderRadius?: number;
 }
+type CartRowsProps = {
+  title: string,
+  number: string | number
+}

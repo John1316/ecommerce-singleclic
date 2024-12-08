@@ -56,7 +56,7 @@ export default function ProductCardCart({ product }: ProductCardProps) {
               <PlusCartIcon />
             </button>
           </div>
-          <div className="text-end flex justify-between md:order-4 md:w-48">
+          <div className="text-end flex justify-between md:order-4 md:w-48 gap-[16px]">
             <p className="text-base font-bold text-gray-900 dark:text-white">
               {product.price.toFixed(2)} LE
             </p>
