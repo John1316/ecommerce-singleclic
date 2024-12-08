@@ -66,40 +66,7 @@ export default function ProductCard({
             <p className="text-2xl font-extrabold leading-tight text-gray-900 dark:text-white">{product.price} LE</p>
 
 
-            {/* <Button 
-              onClick={()=> addToCart(product)}
-            >
-              <CartIcon />
-              Add to Cart
-            </Button> */}
-          {/* <Button
-            id={`add-to-cart-${product.id}`}
-            onClick={handleAddToCart}
-            disabled={isAdding || isAnimating}
-            className="relative overflow-hidden"
-          >
-            <AnimatePresence>
-              {isAdding ? (
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  exit={{ scale: 0 }}
-                  className="absolute inset-0 flex items-center justify-center"
-                >
-                  <Spinner color="white" size="sm" />
-                  </motion.div>
-              ) : (
-                <motion.div
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  className="flex items-center"
-                >
-                  <CartIcon />
-                  <span className="ml-2">Add to Cart</span>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </Button> */}
+
           <AddToCartButton
             product={product}
             isAdding={isAdding}

@@ -20,3 +20,10 @@ type AddToCartBtnProps = {
     isAdding: boolean, 
     handleAddToCart: () => void
 }
+type UseAnimatedRatingProps = {
+    rating?: number;
+    maxStars?: number;
+    animationDelay?: number;
+    icon?: ReactNode;
+    emptyIcon?: ReactNode;
+}

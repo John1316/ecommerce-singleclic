@@ -1,5 +1,6 @@
 import MainLayout from "../layouts/MainLayout"
 import Cart from "../pages/Cart";
+import NotFound from "../pages/NotFound";
 import ProductDetails from "../pages/ProductDetails"
 import Products from "../pages/Products"
 import {  RouteObject } from 'react-router-dom';
@@ -26,6 +27,10 @@ import {  RouteObject } from 'react-router-dom';
         },{
             path: 'cart',
             element: <Cart />
+        },
+        {
+            path: '*',
+            element: <NotFound />
         }
     ]
 }]
