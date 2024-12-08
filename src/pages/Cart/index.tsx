@@ -6,6 +6,7 @@ import ArrowIcon from "../../ui/svgs/ArrowIcon"
 import { Button } from "../../ui/components/Buttons/Button"
 import { useState } from "react"
 import { Alert } from "@nextui-org/react"
+import TrashIcon from "../../ui/svgs/TrashIcon"
 
 export default function Cart() {
     const [visibility, setVisibility] = useState<boolean>(false)
@@ -33,7 +34,16 @@ export default function Cart() {
                                 onClose={() => setVisibility(false)}
                                 />}
                         </div>
-                        
+                        {state.items.length ? <Button
+                        onClick={clearCart}
+                        id={"clearCart"}
+                            ariaLabel="clearCart"
+                                color="danger"
+                                className="mt-[12px]"
+                        >   
+                            <TrashIcon />
+                            Clear cart
+                        </Button>: ''}
                     </div>
 
                     <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
@@ -62,7 +72,7 @@ export default function Cart() {
                             {state.items.length > 0 &&<Button ariaLabel="checkout" onClick={onCheckout} className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed to Checkout</Button>}
 
                             <div className="flex items-center justify-center gap-2">
-                                <span className="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
+                            {state.items.length ? <span className="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span> : ''}
                                 <Link to="/" aria-label="cart" title="" className="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">
                                     Continue Shopping
                                 <ArrowIcon />
