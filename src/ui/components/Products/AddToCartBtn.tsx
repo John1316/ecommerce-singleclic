@@ -1,15 +1,16 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import CartIcon from '../../svgs/CartIcon'
+import { Button } from '../Buttons/Button'
 
 const AddToCartButton = ({ product, isAdding, handleAddToCart }: AddToCartBtnProps) => {
   return (
-    <button
-      aria-label={`product_${product.title}`}
+    <Button
+      ariaLabel={`product_${product.title}`}
       id={`add-to-cart-${product?.id}`}
       
       onClick={handleAddToCart}
       disabled={isAdding}
-      className="relative min-h-[40px] min-w-[140px] flex items-center justify-center bg-[#006fee] text-white rounded-md px-[12px]"
+      className="relative min-h-[40px] min-w-[140px] flex items-center justify-center"
     >
       <AnimatePresence mode="wait">
         {isAdding ? (
@@ -35,7 +36,7 @@ const AddToCartButton = ({ product, isAdding, handleAddToCart }: AddToCartBtnPro
           </motion.div>
         )}
       </AnimatePresence>
-    </button>
+    </Button>
   )
 }
 
