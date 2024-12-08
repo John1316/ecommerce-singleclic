@@ -20,9 +20,7 @@ export default async function AxiosInstance(
     return response.data;
   } catch (error: any) {
     // Handle errors if provided errorHandler function is defined
-    if (error?.response?.status === 401) {
-      // window.location.reload()
-    }
+    console.log("🚀 ~ error:", error)
     return error;
   }
 }

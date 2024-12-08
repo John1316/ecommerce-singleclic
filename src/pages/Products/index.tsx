@@ -10,6 +10,8 @@ export default function Products() {
     const res = await getProducts()
     if(res){
       setProductsItems(res || [])
+    }else{
+      console.log("=== error ===", res);
     }
     setIsLoading(false)
     console.log("🚀 ~ getProductsData ~ res:", res)

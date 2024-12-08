@@ -3,9 +3,18 @@ import { useCart } from "../../hooks/useCart"
 import CartRows from "../../ui/components/Cart/CartRows"
 import ProductCardCart from "../../ui/components/Cart/ProductCardCart"
 import ArrowIcon from "../../ui/svgs/ArrowIcon"
+import { Button } from "../../ui/components/Buttons/Button"
+import { useState } from "react"
+import { Alert } from "@nextui-org/react"
 
 export default function Cart() {
-    const {state} = useCart()
+    const [visibility, setVisibility] = useState<boolean>(false)
+    const {state, clearCart} = useCart()
+
+    function onCheckout(){
+        setVisibility(true)
+        clearCart()
+    }
     return (
         <section className="bg-white antialiased dark:bg-gray-900">
             <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
@@ -14,8 +23,15 @@ export default function Cart() {
                 <div className="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
                     <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
                         <div className="space-y-6">
-                            {state?.items?.length ?state?.items.map((product: Product) => <ProductCardCart key={product.id} product={product} />) : "No items in cart till now"}
-                            
+                            {state?.items?.length ?state?.items.map((product: Product) => <ProductCardCart key={product.id} product={product} />) : <p className="mb-[8px]">No items in cart till now</p>}
+                            {visibility && <Alert
+                                color="success"
+                                description={"Thank you for your purchase. Your order confirmation."}
+                                isVisible={visibility}
+                                title={"Order Successfully Placed! 🎉"}
+                                variant="faded"
+                                onClose={() => setVisibility(false)}
+                                />}
                         </div>
                         
                     </div>
@@ -36,18 +52,14 @@ export default function Cart() {
                                         number={(state.total * 0.14).toFixed(1) || 0}
                                     />
                                 </div>
-
-                                {/* <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
-                                    <dt className="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-                                    <dd className="text-base font-bold text-gray-900 dark:text-white">{(state.total * 1.14).toFixed(1)  || 0} LE</dd>
-                                </dl> */}
+                                <hr />
                                 <CartRows
                                     title="Total"
                                     number={(state.total * 1.14).toFixed(1) || 0}
                                 />
                             </div>
 
-                            {/* <a href="#" className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed to Checkout</a> */}
+                            {state.items.length > 0 &&<Button onClick={onCheckout} className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed to Checkout</Button>}
 
                             <div className="flex items-center justify-center gap-2">
                                 <span className="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
@@ -61,5 +73,6 @@ export default function Cart() {
                     </div>
                 </div>
             </div>
+     
         </section>)
 }

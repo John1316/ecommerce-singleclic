@@ -21,6 +21,8 @@ export default function ProductDetails() {
     console.log("🚀 ~ getProductById ~ productDtails:", productDetail);
     if (productDetail) {
       setProductItem(productDetail);
+    }else{
+      console.log("errorrrr ======>", productDetail);
     }
     setIsLoading(false);
   }
