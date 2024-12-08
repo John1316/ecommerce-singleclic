@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Link } from "react-router-dom";
-import { useCart } from "../../../hooks/useCart";
-import StarIcon from "../../svgs/StarIcon";
+import { useCart } from "../../../../hooks/useCart";
+import StarIcon from "../../../svgs/StarIcon";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { useFloatingCartAnimation } from "../../../hooks/useFloatingCartAnimation";
+import { useFloatingCartAnimation } from "../../../../hooks/useFloatingCartAnimation";
 import AddToCartButton from "./AddToCartBtn";
 
 export default function ProductCard({

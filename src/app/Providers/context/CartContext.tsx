@@ -1,7 +1,7 @@
 import React, { createContext, useEffect } from 'react';
 import axios from 'axios';
 // import { Product, CartItem, CartState } from '../types/cart.types';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useLocalStorage } from '../../../hooks/useLocalStorage';
 
 interface CartContextType {
   state: CartState;

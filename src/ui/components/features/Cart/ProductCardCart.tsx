@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { useCart } from "../../../hooks/useCart";
-import MinusCartIcon from "../../svgs/MinusCartIcon";
-import PlusCartIcon from "../../svgs/PlusCartIcon";
+import { useCart } from "../../../../hooks/useCart";
+import MinusCartIcon from "../../../svgs/MinusCartIcon";
+import PlusCartIcon from "../../../svgs/PlusCartIcon";
 
 export default function ProductCardCart({ product }: ProductCardProps) {
   const { removeFromCart, updateQuantity } = useCart();

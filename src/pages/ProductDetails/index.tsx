@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductId } from "../../api/services/product.service";
 import { useCart } from "../../hooks/useCart";
-import Loader from "../../ui/components/Loading/Loader";
+import Loader from "../../ui/components/common/Loading/Loader";
 import { useFloatingCartAnimation } from "../../hooks/useFloatingCartAnimation";
-import AddToCartButton from "../../ui/components/Products/AddToCartBtn";
+import AddToCartButton from "../../ui/components/features/Products/AddToCartBtn";
 import { useStarsRating } from "../../hooks/useStarsRating";
 
 export default function ProductDetails() {

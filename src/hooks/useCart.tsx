@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../app/Providers/context/CartContext";
 
 // Custom hook to use cart context
 export const useCart = () => {

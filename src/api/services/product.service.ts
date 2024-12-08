@@ -1,4 +1,4 @@
-import { HTTPS_REQUESTS } from "../../config/index.config"
+import { HTTPS_REQUESTS } from "../../app/config/index.config"
 import AxiosInstance from "../AxiosIntance"
 
 async function getProducts(){

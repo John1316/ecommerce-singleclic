@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import ProductCard from "../../ui/components/Products/ProductCard";
+import ProductCard from "../../ui/components/features/Products/ProductCard";
 import { getProducts } from "../../api/services/product.service";
-import Loader from "../../ui/components/Loading/Loader";
+import Loader from "../../ui/components/common/Loading/Loader";
 
 export default function Products() {
   const [productsItems, setProductsItems] = useState<Product[]>([])

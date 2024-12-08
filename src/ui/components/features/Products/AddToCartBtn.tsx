@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import CartIcon from '../../svgs/CartIcon'
-import { Button } from '../Buttons/Button'
+import CartIcon from '../../../svgs/CartIcon'
+import { Button } from '../../common/Buttons/Button'
 
 const AddToCartButton = ({ product, isAdding, handleAddToCart }: AddToCartBtnProps) => {
   return (

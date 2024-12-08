@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
 import { useCart } from "../../hooks/useCart"
-import CartRows from "../../ui/components/Cart/CartRows"
-import ProductCardCart from "../../ui/components/Cart/ProductCardCart"
+import CartRows from "../../ui/components/features/Cart/CartRows"
+import ProductCardCart from "../../ui/components/features/Cart/ProductCardCart"
 import ArrowIcon from "../../ui/svgs/ArrowIcon"
-import { Button } from "../../ui/components/Buttons/Button"
+import { Button } from "../../ui/components/common/Buttons/Button"
 import { useState } from "react"
 import { Alert } from "@nextui-org/react"
 
