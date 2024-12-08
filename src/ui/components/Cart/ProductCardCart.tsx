@@ -37,15 +37,7 @@ export default function ProductCardCart({ product }: ProductCardProps) {
             >
               <MinusCartIcon />
             </button>
-            <input
-              type="text"
-              id="counter-input"
-              data-input-counter
-              className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white"
-              placeholder=""
-              value={product.quantity}
-              required
-            />
+            <p className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white">{product?.quantity || 0}</p>
             <button
               aria-label="plus_quantity"
               type="button"
