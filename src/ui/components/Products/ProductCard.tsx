@@ -7,6 +7,7 @@ import { useState } from "react";
 import CartIcon from "../../svgs/CartIcon";
 import { motion, AnimatePresence } from "framer-motion";
 import { useFloatingCartAnimation } from "../../../hooks/useFloatingCartAnimation";
+import { Spinner } from "@nextui-org/react";
 
 export default function ProductCard({
     product,
@@ -87,8 +88,8 @@ export default function ProductCard({
                   exit={{ scale: 0 }}
                   className="absolute inset-0 flex items-center justify-center"
                 >
-                  <div className="animate-spin rounded-full border-b-2 border-white" />
-                </motion.div>
+                  <Spinner color="white" size="sm" />
+                  </motion.div>
               ) : (
                 <motion.div
                   initial={{ x: -20, opacity: 0 }}

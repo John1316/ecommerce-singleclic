@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import StarIcon from "../../ui/svgs/StarIcon";
 import CartIcon from "../../ui/svgs/CartIcon";
 import { useFloatingCartAnimation } from "../../hooks/useFloatingCartAnimation";
+import { Spinner } from "@nextui-org/react";
 
 export default function ProductDetails() {
   const { addToCart } = useCart();
@@ -109,7 +110,7 @@ export default function ProductDetails() {
                   exit={{ scale: 0 }}
                   className="absolute inset-0 flex items-center justify-center"
                 >
-                  <div className="animate-spin rounded-full border-b-2 border-white" />
+                  <Spinner color="white" size="sm" />
                 </motion.div>
               ) : (
                 <motion.div
